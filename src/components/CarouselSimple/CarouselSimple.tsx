@@ -58,14 +58,14 @@ function CarouselSimple({ images, page, setPage, defaultImageWidth }: SimpleCaro
             transition={{ duration: 0.5, delay: 0.5 }}
         >
             <div
-                className="flex flex-row h-fit w-full max-w-full gap-4 overflow-x-auto"
+                className="flex flex-row h-fit w-full max-w-full overflow-x-auto"
                 ref={scrollRef}
             >
                 {images.map((image, index) => {
                     const scaledHeight = Math.round((image.height / image.width) * defaultImageWidth);
                     const fetcher = index === images.length - 3;
                     return (
-                        <div key={`${image.id}-simple`} className="flex flex-row lg:w-1/4 md:w-1/2 sm:w-full h-50 shrink-0">
+                        <div key={`${image.id}-simple`} className="flex flex-row mr-4 lg:flex-none lg:basis-[calc(25%_-_16px)] md:flex-none md:basis-[calc(50%_-_15px)] md:w-1/2 sm:w-full h-50 shrink-0">
                             <div ref={fetcher ? observeRef : null} className="relative flex flex-col justify-end w-full h-full p-4 shrink-0 rounded-2xl bg-cover bg-center group" style={{backgroundImage: `url(https://picsum.photos/id/${image.id}/${defaultImageWidth}/${scaledHeight})`}}>
                                 <div className="absolute inset-0 bg-black/50 rounded-2xl transition-all z-0 group-hover:bg-black/80" />
                                 <p className="text-3xl transition-all z-1 group-hover:transform group-hover:translate-y-[-75%]">{image.title}</p>

@@ -6,6 +6,7 @@ import getRandomTitle from './utils/randomTitle';
 import { AnimatePresence } from 'framer-motion';
 import CarouselLoader from './components/CarouselLoader/CarouselLoader';
 import CarouselSet from './components/CarouselSet/CarouselSet';
+import CarouselCentral from './components/CarouselCentral/CarouselCentral';
 
 const NUMBER_OF_SET_IMAGES = 20;
 const DEFAULT_WIDTH: number = 600;
@@ -110,6 +111,16 @@ function App() {
                         {setLoading
                             ? <CarouselLoader />
                             : <CarouselSet images={imagesSet} defaultImageWidth={DEFAULT_WIDTH}/>
+                        }
+                    </AnimatePresence>
+                    <div className="flex w-full mb-8 mt-16 items-center gap-8 flex-wrap">
+                        <p className="text-4xl">Central Highlight Carousel</p>
+                        <p className="text-2xl opacity-70">Dynamic styling when approaching center of container</p>
+                    </div>
+                    <AnimatePresence mode='wait'>
+                        {setLoading
+                            ? <CarouselLoader />
+                            : <CarouselCentral images={imagesSet} defaultImageWidth={DEFAULT_WIDTH}/>
                         }
                     </AnimatePresence>
                 </div>

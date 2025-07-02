@@ -48,6 +48,7 @@ function CarouselSet({ images, defaultImageWidth }: SetCarouselProps) {
                 ref={containerRef}
                 className="flex flex-row h-fit max-w-full overflow-x-auto snap-x snap-mandatory scrollbar-hide"
                 onScroll={handleScroll}
+                aria-label='scroller'
             >
                 {extendedImages.map((image, index) => {
                     const scaledHeight = Math.round((image.height / image.width) * defaultImageWidth);

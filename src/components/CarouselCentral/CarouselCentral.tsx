@@ -92,8 +92,9 @@ function CarouselCentral({ images, defaultImageWidth }: CentralCarouselProps) {
                 ref={containerRef}
                 className="relative flex flex-row h-fit max-w-full overflow-x-auto snap-x snap-mandatory scrollbar-hide"
                 onScroll={handleScroll}
+                aria-label='scroller'
             >
-                <div ref={centerChecker} className="absolute top-0 left-1/2 transform translate-x-[-50%] flex flex-row mr-4 lg:flex-none lg:basis-[calc(20%_-_16px)] md:flex-none md:basis-[calc(50%_-_15px)] md:w-1/2 sm:w-full h-40 shrink-0">
+                <div ref={centerChecker} data-testid='center-checker' className="absolute top-0 left-1/2 transform translate-x-[-50%] flex flex-row mr-4 lg:flex-none lg:basis-[calc(20%_-_16px)] md:flex-none md:basis-[calc(50%_-_15px)] md:w-1/2 sm:w-full h-40 shrink-0">
                             
                 </div>
                 {extendedImages.map((image, index) => {
@@ -110,7 +111,7 @@ function CarouselCentral({ images, defaultImageWidth }: CentralCarouselProps) {
                     };
 
                     return (
-                        <div key={`${image.id}-set-${index}`} style={styles} data-index={index} className="flex flex-row mr-4 lg:flex-none lg:basis-[calc(20%_-_16px)] md:flex-none md:basis-[calc(50%_-_15px)] md:w-1/2 sm:w-full h-50 shrink-0 snap-center">
+                        <div key={`${image.id}-set-${index}`} data-testid={1 - 0.4 * absoluteOffset === 1 ? 'center' : 'side'} aria-label={`carousel-item-${index}`} style={styles} data-index={index} className="flex flex-row mr-4 lg:flex-none lg:basis-[calc(20%_-_16px)] md:flex-none md:basis-[calc(50%_-_15px)] md:w-1/2 sm:w-full h-50 shrink-0 snap-center">
                             <div className="relative flex flex-col justify-end w-full h-full p-4 shrink-0 rounded-2xl bg-cover bg-center group" style={{backgroundImage: `url(https://picsum.photos/id/${image.id}/${defaultImageWidth}/${scaledHeight})`}}>
                                 <div className="absolute inset-0 bg-black/50 rounded-2xl transition-all z-0 group-hover:bg-black/80" />
                                 <p className="text-3xl transition-all z-1 group-hover:transform group-hover:translate-y-[-75%]">{image.title}</p>

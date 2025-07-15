@@ -84,8 +84,8 @@ describe('Central Carousel', () => {
     });
 
     it('updates centerIndex when scrolled', async () => {
-        const scroller = screen.getByLabelText('scroller'); // you may need to add aria-label
-        const centerChecker = screen.getByTestId('center-checker'); // temporarily add data-testid for easier targeting
+        const scroller = screen.getByLabelText('scroller');
+        const centerChecker = screen.getByTestId('center-checker');
 
         Object.defineProperty(scroller, 'scrollLeft', {
             configurable: true,
